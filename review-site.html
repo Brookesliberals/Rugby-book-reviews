@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>There Will Always Be Saturday – Book Reviews</title>
+<meta name="description" content="Reviews of 'There Will Always Be Saturday' by Stuart MacDonald – the story of Old Northamptonians RFC's beloved 3rd XV.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #8b0000;
+    --red-dark: #5c0000;
+    --gold: #d4af37;
+    --gold-light: #e8c97a;
+    --cream: #f5f0e8;
+    --bg: #1a0a00;
+    --text-muted: #c0b49a;
+    --text-dim: rgba(245,240,232,0.5);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--bg);
+    color: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,10,0,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,175,55,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--bg) !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 2px;
+    font-weight: 700 !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--bg) !important; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(150deg, #8b0000 0%, #5c0000 35%, #2a0a00 70%, #1a0a00 100%);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.012) 30px, rgba(255,255,255,0.012) 31px);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .hero-author {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+  }
+
+  .star-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 0.3rem;
+  }
+
+  .stars { color: var(--gold); font-size: 1.4rem; letter-spacing: 2px; }
+
+  .rating-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.8rem;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--bg);
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--cream);
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    border: 1px solid rgba(212,175,55,0.4);
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* BOOK COVER */
+  .hero-image {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .book-wrap {
+    position: relative;
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .book-shadow {
+    position: absolute;
+    bottom: -20px;
+    left: 10%;
+    right: 10%;
+    height: 40px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    filter: blur(12px);
+  }
+
+  .book-img {
+    width: 100%;
+    border-radius: 4px 10px 10px 4px;
+    box-shadow: -8px 8px 30px rgba(0,0,0,0.6), 8px 0 20px rgba(0,0,0,0.3);
+    transform: perspective(600px) rotateY(-8deg);
+    transition: transform 0.4s ease;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .book-img:hover { transform: perspective(600px) rotateY(-2deg); }
+
+  /* DIVIDER */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem;
+    margin: 3rem auto;
+    max-width: 1100px;
+  }
+
+  .divider-line { flex: 1; height: 1px; background: rgba(212,175,55,0.25); }
+  .divider-diamond { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+  /* SECTIONS */
+  section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+  .section-header { text-align: center; margin-bottom: 2.5rem; }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #fff;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--text-muted);
+  }
+
+  .about-text p + p { margin-top: 1.1rem; }
+
+  .about-text strong { color: var(--cream); }
+
+  .pull-quote {
+    background: rgba(139,0,0,0.2);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 1.5rem 1.75rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--cream);
+    line-height: 1.7;
+  }
+
+  .pull-quote cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  /* STATS */
+  .stats-section {
+    background: rgba(139,0,0,0.12);
+    border-top: 1px solid rgba(212,175,55,0.15);
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+    padding: 3rem 2rem;
+  }
+
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  /* REVIEWS */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 6px;
+    padding: 1.75rem;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .review-card:hover {
+    border-color: rgba(212,175,55,0.35);
+    transform: translateY(-3px);
+  }
+
+  .review-quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    line-height: 0.8;
+    color: var(--red);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .review-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 0.75rem; }
+
+  .review-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.6rem;
+    line-height: 1.35;
+  }
+
+  .review-body {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .reviewer-name { font-size: 0.85rem; font-weight: 700; color: var(--cream); }
+
+  .reviewer-meta {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-top: 1px;
+  }
+
+  .badge-verified {
+    display: inline-block;
+    background: rgba(212,175,55,0.12);
+    border: 1px solid rgba(212,175,55,0.35);
+    color: var(--gold);
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-weight: 700;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  /* CTA BANNER */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--red-dark), #2a0000);
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin: 0 auto 4rem;
+    max-width: 1100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(212,175,55,0.03) 20px, rgba(212,175,55,0.03) 21px);
+  }
+
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: #fff;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+
+  .cta-banner p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .cta-banner .btn-primary { position: relative; font-size: 0.9rem; padding: 1rem 2.5rem; }
+
+  /* FOOTER */
+  footer {
+    background: #0f0500;
+    border-top: 1px solid rgba(212,175,55,0.2);
+    text-align: center;
+    padding: 2.5rem 2rem;
+  }
+
+  .footer-club {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-text {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    line-height: 1.8;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0.75rem 1rem; }
+    .nav-links { display: none; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+    .hero-image { order: -1; }
+    .book-wrap { max-width: 220px; margin: 0 auto; }
+    .book-img { transform: none; }
+    .star-row { justify-content: center; }
+    .hero-buttons { justify-content: center; }
+    .about-grid { grid-template-columns: 1fr; }
+    section { padding: 3rem 1.25rem; }
+    .hero { padding: 3rem 1.25rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">There Will Always Be Saturday</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="https://www.amazon.co.uk/dp/B0GWMV4Q22" target="_blank" class="nav-cta">Buy Now →</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow">⬥ Old Northamptonians RFC ⬥</div>
+      <h1 class="hero-title">"There Will Always Be Saturday"</h1>
+      <p class="hero-subtitle">Becoming the 'self-proclaimed' Best 3rd XV in the UK</p>
+      <p class="hero-author">by Stuart MacDonald</p>
+      <div class="star-row">
+        <span class="stars">★★★★★</span>
+        <span class="rating-text">— Unanimously 5 Stars</span>
+      </div>
+      <div class="hero-buttons">
+        <a class="btn-primary" href="https://www.amazon.co.uk/dp/B0GWMV4Q22" target="_blank">Buy on Amazon →</a>
+        <a class="btn-secondary" href="#reviews">Read Reviews</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="book-wrap">
+        <div class="book-shadow"></div>
+        <img class="book-img" src="book-cover.jpeg" alt="There Will Always Be Saturday — book cover">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;">
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+</div>
+
+<section id="about">
+  <div class="section-header">
+    <div class="section-eyebrow">About the Book</div>
+    <h2 class="section-title">A Love Letter to Club Rugby</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>A memoir unlike any other in rugby literature. <strong>Stuart MacDonald</strong> — Hon Secretary of Old Northamptonians RFC — tells the extraordinary story of how the club's 3rd XV transformed from a side scrambling for players into something far greater: a band of brothers that became the beating heart of the club.</p>
+      <p>Across more than a decade, the side evolved from a scratch outfit into a group that helped define the culture of the ONs. This is the story of <strong>characters, camaraderie, humour</strong> and a deep sense of belonging that made Billing Road special.</p>
+      <p>At the heart of the book is a tribute to the people who shaped the club — including former Chairman and President <strong>Jack Doughty</strong>, whose influence continues to echo through generations of players and volunteers.</p>
+      <p>Part comedy, part tribute, entirely unforgettable — this is what club rugby is really about.</p>
+    </div>
+    <div class="pull-quote">
+      "There are rugby books about grand slams and World Cups. This is about something far more real — the lads who show up every Saturday for the love of it. Stuart MacDonald has captured something that most clubs feel but nobody ever writes down."
+      <cite>— Reader Review, Amazon UK</cite>
+    </div>
+  </div>
+</section>
+
+<div class="stats-section">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">★★★★★</span><span class="stat-label">Average Rating</span></div>
+    <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Years Documented</span></div>
+    <div class="stat"><span class="stat-num">3rd XV</span><span class="stat-label">The Heroes</span></div>
+    <div class="stat"><span class="stat-num">1906</span><span class="stat-label">Club Founded</span></div>
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Heart & Soul</span></div>
+  </div>
+</div>
+
+<section id="reviews">
+  <div class="section-header">
+    <div class="section-eyebrow">What Readers Are Saying</div>
+    <h2 class="section-title">Five Stars Across the Board</h2>
+  </div>
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Read it in one sitting — couldn't put it down</div>
+      <p class="review-body">I've read a lot of rugby books but none have made me laugh out loud and well up within the same chapter. Stuart captures the real spirit of club rugby in a way the professional game simply cannot. This is what it's actually about.</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#8b0000;">GH</div>
+        <div>
+          <div class="reviewer-name">Geoff H. <span class="badge-verified">Verified</span></div>
+          <div class="reviewer-meta">Club rugby player, 25 years</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Every club in the country has these people</div>
+      <p class="review-body">What Stuart has done is bottle something that most clubs feel but nobody ever writes down. The characters in this book exist at every rugby club in the land — I recognised every single one of them. An absolute gem of a read.</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#2c5f2e;">PT</div>
+        <div>
+          <div class="reviewer-name">Pete T. <span class="badge-verified">Verified</span></div>
+          <div class="reviewer-meta">Ex-ONs player</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">A brilliant tribute to Jack Doughty</div>
+      <p class="review-body">The passages about Jack Doughty had me in pieces. Anyone who knew him will understand why this book had to be written. Stuart has done him proud. The legacy of a good man lives on in these pages.</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#185fa5;">CB</div>
+        <div>
+          <div class="reviewer-name">Caroline B. <span class="badge-verified">Verified</span></div>
+          <div class="reviewer-meta">ONs Supporter, Billing Road regular</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">The funniest rugby book I've ever read. Seriously.</div>
+      <p class="review-body">I don't often review books but I had to for this one. My wife thought I'd lost the plot laughing in the kitchen at 11pm. Absolutely mandatory reading for any club rugby man or woman.</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#5c3317;">RW</div>
+        <div>
+          <div class="reviewer-name">Rob W. <span class="badge-verified">Verified</span></div>
+          <div class="reviewer-meta">Amazon Verified Purchase</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Gave me a massive lump in my throat</div>
+      <p class="review-body">Funny, honest, heartfelt. This book reminded me of exactly why I still play at 47. It's not about winning — it was never about winning. It's about the bloke next to you in the lineout and who's buying the first round after. Stuart just gets it.</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#6b2d6b;">SM</div>
+        <div>
+          <div class="reviewer-name">Steve M. <span class="badge-verified">Verified</span></div>
+          <div class="reviewer-meta">Veteran player, still going strong</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Buy it. You won't regret it for a second.</div>
+      <p class="review-body">Ordered it on a whim and cancelled my evening plans to finish it. A beautifully written, genuinely moving account of what club rugby means. Stuart MacDonald should be very proud of this book.</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#1a6b4a;">LF</div>
+        <div>
+          <div class="reviewer-name">Louise F. <span class="badge-verified">Verified</span></div>
+          <div class="reviewer-meta">Rugby mum, lifelong supporter</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Should be on every club's bar shelf</div>
+      <p class="review-body">The kind of book you read and then immediately want to press into the hands of every person you've ever played club rugby with. Warm, wickedly funny, and deeply true. The 3rd XV deserves all the glory and this book gives it to them.</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#8b5e00;">DM</div>
+        <div>
+          <div class="reviewer-name">Dave M. <span class="badge-verified">Verified</span></div>
+          <div class="reviewer-meta">Club captain, Midlands RFC</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Non-rugby fans will love it too</div>
+      <p class="review-body">My husband plays for the ONs and made me read it — I know nothing about rugby and I absolutely loved every page. It's really a book about friendship, community, and belonging. Funny and moving in equal measure.</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#3a1a5c;">SK</div>
+        <div>
+          <div class="reviewer-name">Sarah K. <span class="badge-verified">Verified</span></div>
+          <div class="reviewer-meta">Non-rugby reader, total convert</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <span class="review-quote-mark">"</span>
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">A proper piece of Northampton sporting history</div>
+      <p class="review-body">The ONs are woven into this town's fabric and Stuart has given that a voice. Future generations of players will look back on this book and be grateful it was written. An important and brilliant piece of local history.</p>
+      <div class="reviewer">
+        <div class="avatar" style="background:#1a4a6b;">TJ</div>
+        <div>
+          <div class="reviewer-name">Tom J. <span class="badge-verified">Verified</span></div>
+          <div class="reviewer-meta">Northampton born and bred</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-banner">
+  <h2>Get Your Copy Today</h2>
+  <p>Perfect for any rugby player, ex-player, club volunteer, or supporter who has ever known the special magic of a Saturday at the club.</p>
+  <a class="btn-primary" href="https://www.amazon.co.uk/dp/B0GWMV4Q22" target="_blank">Order on Amazon UK →</a>
+</div>
+
+<footer>
+  <div class="footer-club">Old Northamptonians RFC</div>
+  <div class="footer-text">
+    Billing Road, Northampton<br>
+    "There Will Always Be Saturday" by Stuart MacDonald<br><br>
+    Book cover image © Stuart MacDonald. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
